@@ -67,27 +67,18 @@ async function captureScreenshot() {
   sendToBackend(image);
 }
 
-// function dataURLToBlob(dataURL) {  
-//   let parts = dataURL.split(','); 
-//   let mime = parts[0].match(/:(.*?);/)[1]; 
-//   let byteString = atob(parts[1]); 
-//   let arrayBuffer = new ArrayBuffer(byteString.length);
-//   let uint8Array = new Uint8Array(arrayBuffer);
-
-//   for (let i = 0; i < byteString.length; i++) {
-//       uint8Array[i] = byteString.charCodeAt(i);
-//   }
-
-//   return new Blob([uint8Array], { type: mime });
-// }
+async function dataURLToBlob(imageData) {
+  let res=await fetch(imageData)
+  return res.blob()
+}
 
 async function sendToBackend(imageData) {
-  // let blob = dataURLToBlob(imageData); // Convert Base64 to Blob
+  let blob = await dataURLToBlob(imageData); // Convert Base64 to Blob
   try {
     let response = await fetch("http://localhost:8000/validate", {
       method: "POST",
       headers: { "Content-Type": "image/png" },
-      body: imageData     // Convert image to blob
+      body: blob     // Convert image to blob
     });
 
     let data = await response.json();
