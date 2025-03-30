@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Child Safety Monitor</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Screenshot Extension</title>
+    <script defer src="popup.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 10px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Child Safety Monitor</h2>
-        <p id="status">Monitoring active...</p>
-        <p id="warning" style="display: none;">⚠️ Inappropriate content detected! ⚠️</p>
-        <div class="button-container">
-            <button id="close">Close</button>
-            <button id="reset">Reset Warning</button>
-        </div>
-    </div>
-    <script src="popup.js"></script>
+    <h2>Screenshot Tool</h2>
+    <button id="capture">Capture Screenshot</button>
 </body>
 </html>

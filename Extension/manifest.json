@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Child Safety Monitor",
+  "name": "SafeX",
   "version": "1.0",
   "permissions": [
     "activeTab",
@@ -19,7 +19,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Child Safety Monitor"
+    "default_title": "SafeX"
   },
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
