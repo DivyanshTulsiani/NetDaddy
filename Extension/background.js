@@ -81,34 +81,31 @@ async function captureScreenshot() {
 //   return new Blob([uint8Array], { type: mime });
 // }
 
-async function sendToBackend(imageData) {
-  // let blob = dataURLToBlob(imageData); // Convert Base64 to Blob
+async function sendToBackend(imageBlob) {
   try {
-    let response = await fetch("http://localhost:8000/validate", {
-      method: "POST",
-      headers: { "Content-Type": "image/png" },
-      body: imageData     // Convert image to blob
-    });
+      let base64Image = await blobToBase64(imageBlob);
 
-    let data = await response.json();
-    console.log("Backend Response:", data);
+      console.log("Sending Base64 Image:", base64Image); // Debugging log
 
-    // If flagged as inappropriate, take action
-    if (!data.result) {
-      // In Manifest V3, we need to use chrome.runtime.sendMessage to communicate
-      chrome.runtime.sendMessage({ action: "show_warning", reason: data.reason });
-      
-      // Optional: Block the content by injecting CSS
-      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        if (tabs[0]) {
-          chrome.scripting.insertCSS({
-            target: { tabId: tabs[0].id },
-            css: "body { display: none !important; }"
-          });
-        }
+      let response = await fetch("http://localhost:8000/validate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: base64Image }) // Ensure correct JSON format
       });
-    }
+
+      let data = await response.json();
+      console.log("Backend Response:", data);
   } catch (error) {
-    console.error("Error:", error);
+      console.error("Error:", error);
   }
 }
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+  });
+}
+
