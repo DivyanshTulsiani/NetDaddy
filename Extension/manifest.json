@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Child Safety Monitor",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "idle",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Child Safety Monitor"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
