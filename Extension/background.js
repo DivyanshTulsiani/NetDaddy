@@ -109,3 +109,4 @@ function blobToBase64(blob) {
   });
 }
 
+///this was second approach
