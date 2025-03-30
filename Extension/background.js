@@ -100,6 +100,16 @@ async function sendToBackend(imageData) {
       });
     }
   } catch (error) {
-    console.error("Error:", error);
+      console.error("Error:", error);
   }
 }
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+  });
+}
+
