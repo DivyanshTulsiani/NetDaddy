@@ -15,9 +15,11 @@
 
 
 //gets logged when extension is installed
-// chrome.runtime.onInstalled.addListener(function(){
-//   console.log("Child Safety extension installed ");
-// });
+chrome.runtime.onInstalled.addListener(function(){
+  chrome.tabs.create({
+    url:'./welcome.html',
+  })
+});
 
 
 // //this is when the child opens a new tab
@@ -59,7 +61,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       captureScreenshot();
   }
 });
-
+chrome.runtime.onMessage.addListener((request,sender,sendResponse)=>{
+  if(request.action === "registerd"){
+    console.log('reg');
+    chrome.storage.local.set({parentEmail:request.parentEmail},()=>{
+    console.log('email recorded');
+    })
+  }
+})
 
 async function captureScreenshot() {
   let image = await chrome.tabs.captureVisibleTab(null, { format: "png" });
@@ -104,12 +113,12 @@ async function sendToBackend(imageData) {
   }
 }
 
-function blobToBase64(blob) {
-  return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(blob);
-      reader.onloadend = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-  });
-}
+// function blobToBase64(blob) {
+//   return new Promise((resolve, reject) => {
+//       const reader = new FileReader();
+//       reader.readAsDataURL(blob);
+//       reader.onloadend = () => resolve(reader.result);
+//       reader.onerror = error => reject(error);
+//   });
+// }
 
