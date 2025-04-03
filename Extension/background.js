@@ -16,9 +16,19 @@
 //this would be called by event listeners which initself calls the capture screenshot functiuon
 
 
-//INACTVITY SOLVED
+chrome.runtime.oninstalled.addListener(function(){
+  chrome.tabs.create({
+    url: "./welcome.html",
+  })
+})
 
+
+
+
+//INACTVITY SOLVED
 chrome.idle.setDetectionInterval(16); // Set idle time to 15 seconds
+
+
 
 chrome.idle.onStateChanged.addListener((newState) => {
     if (newState === "idle") {
