@@ -16,9 +16,9 @@
 //this would be called by event listeners which initself calls the capture screenshot functiuon
 
 
-chrome.runtime.oninstalled.addListener(function(){
+chrome.runtime.onInstalled.addListener(function(){
   chrome.tabs.create({
-    url: "./welcome.html",
+    url : "./welcome.html",
   })
 })
 
@@ -51,6 +51,28 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   }
 });
 
+
+// // Listen for messages from content script, including scrollend events
+// chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+//   if (message.action === "scrollEnded") {
+//     console.log("Scroll ended on page:", message.data.url);
+//     captureScreenshot();
+//   }
+// });
+
+
+// Add this near the top of your background.js
+console.log("Background script loaded");
+
+// Modify your message listener with more logging
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  console.log("Received message:", message);
+  if (message.action === "scrollEnded") {
+    console.log("Scroll ended on page:", message.data.url);
+    console.log("Calling captureScreenshot()");
+    captureScreenshot();
+  }
+});
 
 
 
