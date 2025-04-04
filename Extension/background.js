@@ -117,7 +117,7 @@ async function sendToBackend(imageData) {
       await fetch("http://localhost:8000/whatsapp-alert", {
         method: "POST"
       });
-      
+
 
       // In Manifest V3, we need to use chrome.runtime.sendMessage to communicate
       // sendWhatsAppAlert(screenshotURL);

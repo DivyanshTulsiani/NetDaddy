@@ -29,9 +29,20 @@ app.use('/validate',express.raw({type:'image/*',limit:'10mb'}))
 function sendWhatsAppAlert() {
   client.messages
     .create({
-      body: `🚨 Alert! Explicit content detected.`,
+      body: `⚠️ Alert from NetDaddy:🚨 \n\n
+      ⦾ Explicit Content Detected on Your Child’s Device \n
+      Dear Parent, \n
+
+        NetDaddy has detected explicit or potentially harmful content on your child’s screen.
+        We understand how important it is to provide a safe and secure digital environment for your child. That’s why NetDaddy continuously monitors content in real time and alerts you instantly if any age-inappropriate material is accessed.
+        Our goal is to empower you with timely information so you can take the right steps to protect your child from online risks.
+        If you have any questions or would like to customize the monitoring level, feel free to access your NetDaddy dashboard or contact our support team.
+        Stay assured — with NetDaddy, you’re always one step ahead in safeguarding your child’s digital journey.
+        Sincerely \n
+        The NetDaddy Team`,
+
       from: 'whatsapp:+14155238886', // Twilio Sandbox number
-      to: 'whatsapp:+919643524080'   // Your verified phone number
+      to: 'whatsapp:+919717329267'   // Your verified phone number
     })
     .then(message => console.log(`WhatsApp message sent: ${message.sid}`))
     .catch(err => console.error('Twilio error:', err));
