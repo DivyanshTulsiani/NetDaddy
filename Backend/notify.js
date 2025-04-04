@@ -11,13 +11,13 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-export function sendEmail(email){
+export function sendEmail(email,reason){
     // Define email options
     const mailOptions = {
         from: process.env.GMAIL_ID,
         to: email,
-        subject: 'Hello from Node.js',
-        text: 'This is a test email sent from my Node.js app!',
+        subject: 'Notification from NetPapa',
+        text: `You are getting this email because ${reason}`
   };
   
   // Send the email

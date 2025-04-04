@@ -27,10 +27,7 @@ const model=genAI.getGenerativeModel({
 })
 
 async function checkImage(blob,type){
-    console.time('base64 conversion')
     const base64=await resize(Buffer.from(blob))
-    console.timeEnd('base64 conversion')
-    console.time('api call')
     const result= await model.generateContent([
         {
             inlineData: {
@@ -40,7 +37,6 @@ async function checkImage(blob,type){
         },
         'you have to determine if the image is appropriate for children aged 13 and less ',
     ])
-    console.timeEnd('api call')    
     return result
 }
 

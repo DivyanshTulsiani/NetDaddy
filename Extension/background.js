@@ -66,7 +66,6 @@ console.log("Background script loaded");
 
 // Modify your message listener with more logging
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  console.log("Received message:", message);
   if (message.action === "scrollEnded") {
     console.log("Scroll ended on page:", message.data.url);
     console.log("Calling captureScreenshot()");
@@ -81,11 +80,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       captureScreenshot();
   }
 });
+chrome.runtime.onMessage.addListener((request,sender,sendResponse)=>{
+  if (request.action === 'registered') {
+    chrome.storage.local.set({parentEmail:request.parentEmail},()=>{
 
+    })
+  }
+})
 
 async function captureScreenshot() {
   let image = await chrome.tabs.captureVisibleTab(null, { format: "png" });
-  console.log(image);
   sendToBackend(image);
 }
 
@@ -104,13 +108,22 @@ async function sendToBackend(imageData) {
     });
 
     let data = await response.json();
-    console.log("Backend Response:", data);
 
     // If flagged as inappropriate, take action
     if (!data.result) {
       // In Manifest V3, we need to use chrome.runtime.sendMessage to communicate
       chrome.runtime.sendMessage({ action: "show_warning", reason: data.reason });
-      
+      chrome.storage.local.get(['parentEmail'],async (result)=>{
+        console.log(result.parentEmail)
+        await fetch("http://localhost:8000/notify",{
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body:JSON.stringify({
+            parentEmail:result.parentEmail,
+            reason:data.reason
+          })
+        })
+      })
       // Optional: Block the content by injecting CSS
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         if (tabs[0]) {
