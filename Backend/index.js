@@ -34,17 +34,19 @@ app.use('/validate',express.raw({type:'image/*',limit:'10mb'}))
 function sendWhatsAppAlert() {
   client.messages
     .create({
-      body: `⚠️ Alert from NetDaddy:🚨 \n\n
-    ⦾ Explicit Content Detected on Your Childs Device \n
-      Dear Parent, \n
-
-    NetDaddy has detected explicit or potentially harmful content on your childs screen.
-        We understand how important it is to provide a safe and secure digital environment for your child. Thats why NetDaddy continuously monitors content in real time and alerts you instantly if any age-inappropriate material is accessed.
-        Our goal is to empower you with timely information so you can take the right steps to protect your child from online risks.
-        If you have any questions or would like to customize the monitoring level, feel free to access your NetDaddy dashboard or contact our support team.
-        Stay assured — with NetDaddy, youre always one step ahead in safeguarding your childs digital journey.
-        Sincerely \n
-        The NetDaddy Team`,
+      body: `⚠️ *NetDaddy Alert!* 🚨\n\n
+1️⃣ *Explicit Content Detected!*\n\n
+📢 *Dear Parent,*\n\n
+*NetDaddy* has detected explicit or potentially harmful content on your child’s device.\n\n
+2️⃣ *Why This Alert?*\n
+We continuously monitor screen activity to help you create a safer digital space for your child.\n\n
+3️⃣ *What Can You Do?*\n
+✅ Review the content in your *NetDaddy* dashboard.\n
+✅ Adjust monitoring settings if needed.\n
+✅ Contact our support team for assistance.\n\n
+🔒 *Stay Assured!*\n
+With *NetDaddy*, you're always a step ahead in safeguarding your child’s online experience.\n\n
+*👨‍💻 The NetDaddy Team*`,
 
       from: 'whatsapp:+14155238886', // Twilio Sandbox number
       to: 'whatsapp:+919717329267'   // Your verified phone number
