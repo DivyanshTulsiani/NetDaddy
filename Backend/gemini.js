@@ -35,7 +35,9 @@ async function checkImage(blob,type){
                 mimeType: type,
             },
         },
-        'you have to determine if the image is appropriate for children aged 13 and less ',
+        `Determine if the image is appropriate for children aged 13 and under. 
+        **Do not** block images related to web development, technology, educational content, or programming tech stacks. 
+        Only flag images that contain explicit, violent, or highly inappropriate content.`,
     ])
     return result
 }

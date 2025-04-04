@@ -9,7 +9,7 @@ import {sendEmail} from "./notify.js"
 
 import twilio from "twilio"
 const app=express()
-const port=process.env.port
+const port=process.env.port || 3000
 
 
 
