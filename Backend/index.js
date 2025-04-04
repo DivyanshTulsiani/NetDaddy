@@ -32,7 +32,6 @@ app.post('/validate',async (req,res)=>{
 // })
 
 app.post('/notify',(req,res)=>{
-    console.log('api hit');
     sendEmail(req.body.parentEmail,req.body.reason);
     res.send('ok')
     res.status(200)

@@ -4,10 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
+    <link rel="stylesheet" href="welcome.css">
     <script src="./welcome.js"></script>
 </head>
 <body>
-    <input type="text" name="parent-email" id="email-in"> <!--don't change ID-->
-    <button id="submit">submit</button> <!--don't change ID-->
+    <!-- <input type="text" name="parent-email" id="email-in"> -->
+    <!-- <button id="submit">submit</button>  -->
+
+    <div class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+        <svg class="shield-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4361ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M8 11l3 3 5-5"></path>
+        </svg>
+        <h1 class="logo">NetDaddy</h1>
+        <p class="tagline">Simple, effective protection for your children online</p>
+        
+        <!-- Registration Form -->
+        <form id="registration-form" class="form">
+            <div class="form-group">
+            <label for="email" class="form-label">Parent Email Address</label>
+            <input type="email" id="email-in" class="form-input" placeholder="you@example.com">
+            <p class="error-message">Please enter a valid email address</p>
+            </div>
+            
+            <button type="submit" id="submit" class="form-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+            </svg>
+            Register SafeStart
+            </button>
+            
+            <p class="form-disclaimer">By registering, you agree to our Terms of Service and Privacy Policy.</p>
+        </form>
+        
+        <!-- Success Message (hidden by default) -->
+        <div id="success-message" class="success-message">
+            <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <h3 class="success-title">Registration Complete!</h3>
+            <!-- <p class="success-text">We've sent a confirmation email to <span id="registered-email"></span>. Please check your inbox to complete the setup process.</p>
+            <button id="register-another" class="success-button">Register Another Email</button> -->
+        </div>
+        </div>
+        
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+        <div class="feature-icon">🔍</div>
+        <h3 class="feature-title">Content Filtering</h3>
+        <p>Automatically blocks inappropriate images, videos, and text content</p>
+        </div>
+        
+        <div class="feature">
+        <div class="feature-icon">⏱️</div>
+        <h3 class="feature-title">Time Limits</h3>
+        <p>Set daily screen time limits to encourage healthy online habits</p>
+        </div>
+        
+        <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">Activity Reports</h3>
+        <p>Weekly summaries of browsing activity and blocked content</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>NetDaddy &copy; 2025 - Keeping children safe online</p>
+    </footer>
 </body>
 </html>
