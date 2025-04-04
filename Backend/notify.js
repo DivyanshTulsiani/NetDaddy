@@ -98,7 +98,7 @@ export function sendEmail(email,reason){
   const mailOptions = {
       from: process.env.GMAIL_ID,
       to: email,
-      subject: 'Notification from NetPapa',
+      subject: 'Notification from NetDaddy',
       text: `You are getting this email because ${reason}`,
       html: html
   };
