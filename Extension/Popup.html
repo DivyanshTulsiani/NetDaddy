@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extension</title>
-    <link rel="stylesheet" href="styles.css"> 
-    <script defer src="popup.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>NetDaddy - Child Protection Extension</title>
+
 </head>
 <body>
-    <div class="outertopbar">
-        <div class="topbar">
-            SafeSurf Jr.
-        </div>
+  <div class="hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <svg class="shield-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4361ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <path d="M8 11l3 3 5-5"></path>
+      </svg>
+      <h1 class="logo">NetDaddy</h1>
+      <p class="tagline">Simple, effective protection for your children online</p>
+      
+      <div class="toggle-container">
+        <span class="toggle-label">OFF</span>
+        <label class="toggle">
+          <input type="checkbox" checked>
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">ON</span>
+      </div>
+      
+      <p class="status">Protection is currently active</p>
     </div>
-
+  </div>
+  
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">🔍</div>
+      <h3 class="feature-title">Content Filtering</h3>
+      <p>Automatically blocks inappropriate images, videos, and text content</p>
+    </div>
+    
+    <div class="feature">
+      <div class="feature-icon">⏱️</div>
+      <h3 class="feature-title">Time Limits</h3>
+      <p>Set daily screen time limits to encourage healthy online habits</p>
+    </div>
+    
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h3 class="feature-title">Activity Reports</h3>
+      <p>Weekly summaries of browsing activity and blocked content</p>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <p>NetDaddy &copy; 2025 - Keeping children safe online</p>
+  </footer>
 </body>
 </html>
