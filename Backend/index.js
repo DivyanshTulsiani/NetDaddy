@@ -13,8 +13,13 @@ const port=process.env.port || 3000
 
 
 
-const accountSid = "AC549e5aca7cbebad896ab2470826bf3fe";
-const authToken = "ad3be847147f53362f64b24c8d5151e9";
+const accountSid = "AC0bdccdc5180bfac211e4f686ddcf276e";
+const authToken = "d7157c1e2b11f674e3f3ed68b878eff3";
+
+//use this one if thew above does not work
+
+// const accountSid = "AC549e5aca7cbebad896ab2470826bf3fe";
+// const authToken = "ad3be847147f53362f64b24c8d5151e9";
 
 const client = new twilio(accountSid, authToken);
 
@@ -30,10 +35,10 @@ function sendWhatsAppAlert() {
   client.messages
     .create({
       body: `⚠️ Alert from NetDaddy:🚨 \n\n
-      ⦾ Explicit Content Detected on Your Childs Device \n
+    ⦾ Explicit Content Detected on Your Childs Device \n
       Dear Parent, \n
 
-        NetDaddy has detected explicit or potentially harmful content on your childs screen.
+    NetDaddy has detected explicit or potentially harmful content on your childs screen.
         We understand how important it is to provide a safe and secure digital environment for your child. Thats why NetDaddy continuously monitors content in real time and alerts you instantly if any age-inappropriate material is accessed.
         Our goal is to empower you with timely information so you can take the right steps to protect your child from online risks.
         If you have any questions or would like to customize the monitoring level, feel free to access your NetDaddy dashboard or contact our support team.
