@@ -111,7 +111,16 @@ async function sendToBackend(imageData) {
 
     // If flagged as inappropriate, take action
     if (!data.result) {
+
+      //send message to whatsapp number if content is detected malicious
+
+      await fetch("http://localhost:8000/whatsapp-alert", {
+        method: "POST"
+      });
+      
+
       // In Manifest V3, we need to use chrome.runtime.sendMessage to communicate
+      // sendWhatsAppAlert(screenshotURL);
       chrome.runtime.sendMessage({ action: "show_warning", reason: data.reason });
       chrome.storage.local.get(['parentEmail'],async (result)=>{
         console.log(result.parentEmail)
