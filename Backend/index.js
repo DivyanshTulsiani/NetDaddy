@@ -13,13 +13,16 @@ const port=process.env.port || 3000
 
 
 
-const accountSid = "AC0bdccdc5180bfac211e4f686ddcf276e";
-const authToken = "d7157c1e2b11f674e3f3ed68b878eff3";
+// const accountSid = "AC0bdccdc5180bfac211e4f686ddcf276e";
+// const authToken = "d7157c1e2b11f674e3f3ed68b878eff3";
 
 //use this one if thew above does not work
 
 // const accountSid = "AC549e5aca7cbebad896ab2470826bf3fe";
-// const authToken = "ad3be847147f53362f64b24c8d5151e9";
+// const authToken = "6e8698be9dc7baa53965f7958ee3b4fd";
+
+const accountSid = "ACa3cd3b36a20cb1d67fa1b8c19e3ba8c5";
+const authToken = "955ffa728f728fc41bab1652adc15fcc";
 
 const client = new twilio(accountSid, authToken);
 
@@ -49,7 +52,7 @@ With *NetDaddy*, you're always a step ahead in safeguarding your child’s onlin
 *👨‍💻 The NetDaddy Team*`,
 
       from: 'whatsapp:+14155238886', // Twilio Sandbox number
-      to: 'whatsapp:+919717329267'   // Your verified phone number
+      to: 'whatsapp:+919264117717'   // Your verified phone number
     })
     .then(message => console.log(`WhatsApp message sent: ${message.sid}`))
     .catch(err => console.error('Twilio error:', err));
@@ -72,7 +75,7 @@ function sendWhatsAppAlertUninstall() {
   *👨‍💻 The NetDaddy Team*`,
   
         from: 'whatsapp:+14155238886', // Twilio Sandbox number
-        to: 'whatsapp:+919717329267'   // Your verified phone number
+        to: 'whatsapp:+919264117717'   // Your verified phone number
       })
       .then(message => console.log(`WhatsApp message sent: ${message.sid}`))
       .catch(err => console.error('Twilio error:', err));
