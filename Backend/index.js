@@ -3,7 +3,7 @@ import 'dotenv/config'
 import checkImage from "./gemini.js"
 import cors from  "cors"
 import {sendEmail} from "./notify.js"
-
+import { onUninstall } from "./notify.js"
 // import bodyParser from 'body-parser'
 
 
@@ -86,7 +86,12 @@ app.post('/whatsapp-alert', (req, res) => {
     sendWhatsAppAlert();
     res.send('WhatsApp alert sent');
   });
-
+app.get('/uninstalled',(req,res)=>{
+    let email=req.query.parentEmail
+    onUninstall(email)
+    res.send('extension uninstalled')
+    res.status(200)
+})
 app.listen(port,()=>{
     console.log(`server started on ${port}`)
 })

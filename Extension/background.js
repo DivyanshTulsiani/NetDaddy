@@ -82,6 +82,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 chrome.runtime.onMessage.addListener((request,sender,sendResponse)=>{
   if (request.action === 'registered') {
+    chrome.runtime.setUninstallURL(`http://localhost:8000/uninstalled?parentEmail=${request.parentEmail}`);
     chrome.storage.local.set({parentEmail:request.parentEmail},()=>{
 
     })

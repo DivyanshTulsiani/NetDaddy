@@ -112,3 +112,59 @@ export function sendEmail(email,reason){
     }
   });
 }
+
+const unisntallHTML=`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetDaddy Alert</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f4; padding: 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+          <tr>
+            <td style="background-color:rgb(205, 2, 5); padding: 20px; text-align: center;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">NetDaddy Alert</h1>
+              <p style="color: #ffffff; margin: 5px 0 0; font-size: 14px;">Keeping Your Child Safe Online</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 30px; color: #333333;">
+              <h2 style="font-size: 20px; margin: 0 0 15px;">Hello Parent,</h2>
+              <p style="font-size: 16px; line-height: 1.5; margin: 0 0 20px;">
+                We’re reaching out because NetDaddy has been <span style="font-weight: bolder;">uninstalled from your child's computer </span>. 
+                For continued protection please re-install NetDaddy extension on your child's computer as soon as possible.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+`
+export function onUninstall(email){
+  const mailOptions = {
+    from: process.env.GMAIL_ID,
+    to: email,
+    subject: 'Notification from NetDaddy',
+    text: `We’re reaching out because NetDaddy has been uninstalled from your child's computer. 
+                For continued protection please re-install NetDaddy extension on your child's computer as soon as possible.`,
+    html: unisntallHTML
+};
+
+// Send the email
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    console.log('Error:', error);
+  } else {
+    console.log('Email sent:', info.response);
+  }
+});
+}
