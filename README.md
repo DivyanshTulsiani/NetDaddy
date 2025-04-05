@@ -1,5 +1,5 @@
 # NetDaddy
-The age of internet brings a lot of convenience but hey on the contrary our society is now more vulrnerable to getting exposed vulnerable content freely flowing on the internet specially the younger one's. It is our responsiblility to protect them from Pornography/Nudity/Sexual Abuse
+The age of internet brings a lot of convenience but hey on the contrary our society is now more vulnerable to getting exposed vulnerable content freely flowing on the internet specially the younger one's. It is our responsiblility to protect them from Pornography/Nudity/Sexual Abuse
 
 You might wonder as options like Safe Search exist then what is the need but hey did you know safe search can not handle where we shine
 
