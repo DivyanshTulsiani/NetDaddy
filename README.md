@@ -1,4 +1,4 @@
-# NetDaddy
+# **NetDaddy**
 The age of internet brings a lot of convenience but hey on the contrary our society is now more vulrnerable to getting exposed vulnerable content freely flowing on the internet specially the younger one's. It is our responsiblility to protect them from Pornography/Nudity/Sexual Abuse
 
 You might wonder as options like Safe Search exist then what is the need but hey did you know safe search can not handle where we shine
@@ -25,6 +25,14 @@ Instant message is sent on the parent's **Email-Id and Whatsapp Number** when an
 ### Twilio And Node Mailer
 
 Twilio and NodeMailer Integrated to save the day!!!
+
+## Deletion Prevention
+
+We are able to detect if the child delete's the extension or for any reason the extension is deleted from the child's device
+
+### ⚠️ Instant Message on deletion⚠️
+
+In case we detect deletion message is sent to the parent's device through mail and whatsapp
 
 
 ## In Summary
