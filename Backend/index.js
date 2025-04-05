@@ -55,6 +55,29 @@ With *NetDaddy*, you're always a step ahead in safeguarding your child’s onlin
     .catch(err => console.error('Twilio error:', err));
 }
 
+//when user uninsatlls the extension this gets called on the onuninstalledurl
+
+function sendWhatsAppAlertUninstall() {
+    client.messages
+      .create({
+        body: `⚠️ *NetDaddy Alert!* 🚨\n\n
+  📢 *Dear Parent,*\n\n
+  *NetDaddy* has detected that the extension on your child's device has been uninstalled.\n\n
+    *What Can You Do?*\n
+  ✅ Review the content in your *NetDaddy* dashboard.\n
+  ✅ Adjust monitoring settings if needed.\n
+  ✅ Contact our support team for assistance.\n\n
+  🔒 *Stay Assured!*\n
+  With *NetDaddy*, you're always a step ahead in safeguarding your child’s online experience.\n\n
+  *👨‍💻 The NetDaddy Team*`,
+  
+        from: 'whatsapp:+14155238886', // Twilio Sandbox number
+        to: 'whatsapp:+919717329267'   // Your verified phone number
+      })
+      .then(message => console.log(`WhatsApp message sent: ${message.sid}`))
+      .catch(err => console.error('Twilio error:', err));
+  }
+
 
 app.post('/validate',async (req,res)=>{
     // console.log(req)
@@ -86,8 +109,11 @@ app.post('/whatsapp-alert', (req, res) => {
     sendWhatsAppAlert();
     res.send('WhatsApp alert sent');
   });
+
+
 app.get('/uninstalled',(req,res)=>{
     let email=req.query.parentEmail
+    sendWhatsAppAlertUninstall();
     onUninstall(email)
     res.send('extension uninstalled')
     res.status(200)
